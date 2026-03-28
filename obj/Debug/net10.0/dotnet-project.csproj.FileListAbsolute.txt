@@ -156,3 +156,7 @@ D:\dotnet-learning\dotnet-project\obj\Debug\net10.0\refint\dotnet-project.dll
 D:\dotnet-learning\dotnet-project\obj\Debug\net10.0\dotnet-project.pdb
 D:\dotnet-learning\dotnet-project\obj\Debug\net10.0\dotnet-project.genruntimeconfig.cache
 D:\dotnet-learning\dotnet-project\obj\Debug\net10.0\ref\dotnet-project.dll
+D:\dotnet-learning\dotnet-project\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\dotnet-learning\dotnet-project\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\dotnet-learning\dotnet-project\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\dotnet-learning\dotnet-project\obj\Debug\net10.0\dotnet-project.sourcelink.json
