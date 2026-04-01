@@ -1,3 +1,4 @@
+using dotnet_learning.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace dotnet_learning.Controllers;
@@ -6,10 +7,25 @@ namespace dotnet_learning.Controllers;
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
 {
+    
+    public WeatherForecastController(DatabaseContext dbContext)
+    {
+        DbContext = dbContext;
+    }
     private static readonly string[] Summaries =
     [
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     ];
+
+    public DatabaseContext DbContext { get; set;}
+
+    [HttpGet("test")]
+    public IActionResult GetTModel()
+    {
+        var result = DbContext.Products.ToList();
+        return Ok(result);
+    }
+    
 
     [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
