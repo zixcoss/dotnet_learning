@@ -4,7 +4,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>dotnet_project</RootNamespace>
+    <RootNamespace>dotnet_learning</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

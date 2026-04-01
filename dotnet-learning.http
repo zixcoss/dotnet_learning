@@ -1,4 +1,4 @@
-@dotnet_project_HostAddress = http://localhost:5071
+@dotnet_learning_HostAddress = http://localhost:5071
 
 GET {{dotnet_project_HostAddress}}/weatherforecast/
 Accept: application/json

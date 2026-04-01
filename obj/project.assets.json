@@ -3541,11 +3541,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\dotnet-learning\\dotnet-project\\dotnet-project.csproj",
-      "projectName": "dotnet-project",
-      "projectPath": "D:\\dotnet-learning\\dotnet-project\\dotnet-project.csproj",
+      "projectUniqueName": "D:\\dotnet_learning\\dotnet_learning\\dotnet-learning.csproj",
+      "projectName": "dotnet-learning",
+      "projectPath": "D:\\dotnet_learning\\dotnet_learning\\dotnet-learning.csproj",
       "packagesPath": "C:\\Users\\watch\\.nuget\\packages\\",
-      "outputPath": "D:\\dotnet-learning\\dotnet-project\\obj\\",
+      "outputPath": "D:\\dotnet_learning\\dotnet_learning\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\watch\\AppData\\Roaming\\NuGet\\NuGet.Config"

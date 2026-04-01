@@ -1,4 +1,4 @@
-namespace dotnet_project;
+namespace dotnet_learning;
 
 public class WeatherForecast
 {

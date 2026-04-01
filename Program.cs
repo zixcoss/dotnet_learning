@@ -1,4 +1,3 @@
-using dotnet_project.Database;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 // using System.Text;
 // dotnet add package Microsoft.EntityFrameworkCore.InMemory
 // using Microsoft.EntityFrameworkCore;
-builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer("Server=localhost,1433;user id=sa; password=Mflv[Mflv[; Database=demopos; TrustServerCertificate=True;"));
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
