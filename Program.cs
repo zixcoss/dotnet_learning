@@ -12,9 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 // using Microsoft.EntityFrameworkCore;
 // dotnet add package Microsoft.EntityFrameworkCore.InMemory
 // using Microsoft.EntityFrameworkCore;
-builder.Services.AddDbContext<DatabaseContext>(options =>
-    options.UseSqlServer());
-
+builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionSQLServer")));
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
