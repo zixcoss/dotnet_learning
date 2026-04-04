@@ -8,6 +8,7 @@ namespace dotnet_learning.DTOs.Product
         public string? Image { get; set; }
         public int Stock { get; set; }
         public decimal Price { get; set; }
+        public string CategoryName {get; set;} = "";
 
         public static ProductResponse FromProduct(Product product)
         {
@@ -18,6 +19,7 @@ namespace dotnet_learning.DTOs.Product
                 Image = product.Image,
                 Stock = product.Stock,
                 Price = product.Price,
+                CategoryName = product.Category.Name
             };
         }
     }
