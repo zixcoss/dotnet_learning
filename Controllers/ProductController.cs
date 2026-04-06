@@ -28,7 +28,7 @@ namespace dotnet_learning.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductResponse>>> GetProducts()
+        public async Task<ActionResult<IEnumerable<ProductResponse>>> GetProductsAsync()
         {
             return (await this.ProductService.FindAll()).Select(ProductResponse.FromProduct).ToList();
         }
@@ -47,15 +47,30 @@ namespace dotnet_learning.Controllers
         [HttpGet("search")]
         public async Task<ActionResult<IEnumerable<ProductResponse>>> Search([FromQuery] string name)
         {
-            var result = (await this.ProductService.Search(name)).Select(ProductResponse.FromProduct).ToList();
+            var result = (await this.ProductService.Search(name))
+            .Select(ProductResponse.FromProduct)
+            .ToList();
+
             return result;
         }
-        
+
         [HttpPost]
-        public async Task<IActionResult> AddProduct([FromForm] ProductRequest productRequest)
+        public async Task<IActionResult> AddProductAsync([FromForm] ProductRequest productRequest)
         {
+            string finalImageName = "";
+
+            if (productRequest.FormFiles != null)
+            {
+                (string errorMessage, string imageName) = await ProductService.UploadImage(productRequest.FormFiles);
+                if (!String.IsNullOrEmpty(errorMessage))
+                {
+                    return BadRequest();
+                }
+                finalImageName = imageName;
+            }
+
             var product = productRequest.Adapt<Product>();
-            product.Image = "";
+            product.Image = finalImageName;
             await ProductService.Create(product);
             return StatusCode((int)HttpStatusCode.Created, product);
         }
@@ -91,7 +106,7 @@ namespace dotnet_learning.Controllers
             await ProductService.Update(product);
             return Ok(ProductResponse.FromProduct(product));
         }
-        
-        
+
+
     }
 }

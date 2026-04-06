@@ -10,6 +10,6 @@ namespace dotnet_learning.Interfaces
         Task Delete(Product product);
         Task Update(Product product);
         Task<IEnumerable<Product>> Search(string name);
-        // Task<(string errorMessage, string imageName)> UploadImage(List<IFormFile> formFiles);
+        Task<(string? errorMessage, string imageName)> UploadImage(List<IFormFile> formFiles);
     }
 }
