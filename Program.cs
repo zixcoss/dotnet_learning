@@ -1,11 +1,7 @@
 using System.Reflection;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using dotnet_learning.Data;
 using dotnet_learning.installers;
-using dotnet_learning.Interfaces;
-using dotnet_learning.Services;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,7 +26,7 @@ builder.Services.InstallServiceInAssembly(builder.Configuration);
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
 {
-    builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
+    builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly()!)
     .Where(t => t.Name.EndsWith("Service"))
     .AsImplementedInterfaces();
 });
@@ -52,6 +48,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseStaticFiles();
 app.MapControllers();

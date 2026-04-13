@@ -1,20 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
-using dotnet_learning.Data;
 using dotnet_learning.DTOs.Product;
 using dotnet_learning.Entities;
 using dotnet_learning.Interfaces;
 using Mapster;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.EntityFrameworkCore;
 
 namespace dotnet_learning.Controllers
 {
     [Route("[controller]")]
+    [Authorize]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -44,6 +39,7 @@ namespace dotnet_learning.Controllers
             return ProductResponse.FromProduct(product);
         }
 
+        [AllowAnonymous]
         [HttpGet("search")]
         public async Task<ActionResult<IEnumerable<ProductResponse>>> Search([FromQuery] string name)
         {
@@ -61,7 +57,7 @@ namespace dotnet_learning.Controllers
 
             if (productRequest.FormFiles != null)
             {
-                (string errorMessage, string imageName) = await ProductService.UploadImage(productRequest.FormFiles);
+                (string? errorMessage, string imageName) = await ProductService.UploadImage(productRequest.FormFiles);
                 if (!String.IsNullOrEmpty(errorMessage))
                 {
                     return BadRequest();
