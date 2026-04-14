@@ -20,19 +20,9 @@ namespace dotnet_learning.installers
                     BearerFormat = "JWT",
                 });
 
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement{
-                    {
-                        new OpenApiSecurityScheme{
-                            Reference = new OpenApiReference{
-                                Id = "Bearer",
-                                Type = ReferenceType.SecurityScheme,
-                            },
-                            Scheme = "Bearer",
-                            Name = "Bearer",
-                            In = ParameterLocation.Header
-                        },
-                        new List<String>()
-                    }
+                c.AddSecurityRequirement(doc => new OpenApiSecurityRequirement
+                {
+                    [new OpenApiSecuritySchemeReference("Bearer", doc)] = []
                 });
             }
             );

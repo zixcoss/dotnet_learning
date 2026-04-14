@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace dotnet_learning.Controllers
 {
     [Route("[controller]")]
-    [Authorize]
+    [Authorize(Roles = "Admin,Cashier")]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -19,8 +19,6 @@ namespace dotnet_learning.Controllers
         {
             ProductService = productService;
         }
-
-
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductResponse>>> GetProductsAsync()
@@ -39,8 +37,8 @@ namespace dotnet_learning.Controllers
             return ProductResponse.FromProduct(product);
         }
 
-        [AllowAnonymous]
         [HttpGet("search")]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<ProductResponse>>> Search([FromQuery] string name)
         {
             var result = (await this.ProductService.Search(name))
